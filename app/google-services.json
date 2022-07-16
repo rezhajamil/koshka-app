@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "722547354607",
+    "project_id": "koshka-355915",
+    "storage_bucket": "koshka-355915.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722547354607:android:4d36cf1a6122c22881641a",
+        "android_client_info": {
+          "package_name": "com.rezha.koshka_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "722547354607-c82tjgb0icbnthnq8fuq6c1pp30pbt7f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rezha.koshka_app",
+            "certificate_hash": "8edc1306c6f376c30012d658bcec73a0ee7a46fe"
+          }
+        },
+        {
+          "client_id": "722547354607-l02pcib5d3bq4h8i497u0ug5tqarb4k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrKhOD2g1gsjDukfhuMGdM3gNVz2DK_QU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "722547354607-l02pcib5d3bq4h8i497u0ug5tqarb4k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

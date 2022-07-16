@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">Koshka</string>
+
+    <string name="client_id">722547354607-3rglk28mpg93bkk997e315ut1reqoanq.apps.googleusercontent.com</string>
+
+    <string-array name="kecamatan">
+        <item>Semua</item>
+        <item>Medan Amplas</item>
+        <item>Medan Area</item>
+        <item>Medan Baru</item>
+        <item>Medan Barat</item>
+        <item>Medan Belawan</item>
+        <item>Medan Deli</item>
+        <item>Medan Denai</item>
+        <item>Medan Helvetia</item>
+        <item>Medan Johor</item>
+        <item>Medan Kota</item>
+        <item>Medan Labuhan</item>
+        <item>Medan Maimun</item>
+        <item>Medan Marelan</item>
+        <item>Medan Perjuangan</item>
+        <item>Medan Petisah</item>
+        <item>Medan Polonia</item>
+        <item>Medan Sunggal</item>
+        <item>Medan Selayang</item>
+        <item>Medan Tembung</item>
+        <item>Medan Tuntungan</item>
+        <item>Medan Timur</item>
+    </string-array>
+    <string-array name="kecamatan_input">
+        <item>Pilih Domisili</item>
+        <item>Medan Amplas</item>
+        <item>Medan Area</item>
+        <item>Medan Baru</item>
+        <item>Medan Barat</item>
+        <item>Medan Belawan</item>
+        <item>Medan Deli</item>
+        <item>Medan Denai</item>
+        <item>Medan Helvetia</item>
+        <item>Medan Johor</item>
+        <item>Medan Kota</item>
+        <item>Medan Labuhan</item>
+        <item>Medan Maimun</item>
+        <item>Medan Marelan</item>
+        <item>Medan Perjuangan</item>
+        <item>Medan Petisah</item>
+        <item>Medan Polonia</item>
+        <item>Medan Sunggal</item>
+        <item>Medan Selayang</item>
+        <item>Medan Tembung</item>
+        <item>Medan Tuntungan</item>
+        <item>Medan Timur</item>
+    </string-array>
+
+    <string-array name="ras">
+        <item>Semua</item>
+        <item>Kucing Domestik</item>
+        <item>Kucing Persia</item>
+        <item>Kucing Anggora</item>
+        <item>Kucing Siam</item>
+        <item>Kucing Ragdoll</item>
+        <item>Kucing Maine Coon</item>
+        <item>Kucing Sphynx</item>
+        <item>Kucing Russian Blue</item>
+        <item>Kucing Bengal</item>
+        <item>Kucing Munchkin</item>
+        <item>Kucing British Shorthair</item>
+        <item>Kucing American Shorthair</item>
+        <item>Kucing Scottish Fold</item>
+        <item>Kucing Balinese</item>
+        <item>Kucing Japanese Bobtail</item>
+        <item>Kucing Singapura</item>
+    </string-array>
+
+    <string-array name="ras_input">
+        <item>Pilih Ras</item>
+        <item>Kucing Domestik</item>
+        <item>Kucing Persia</item>
+        <item>Kucing Anggora</item>
+        <item>Kucing Siam</item>
+        <item>Kucing Ragdoll</item>
+        <item>Kucing Maine Coon</item>
+        <item>Kucing Sphynx</item>
+        <item>Kucing Russian Blue</item>
+        <item>Kucing Bengal</item>
+        <item>Kucing Munchkin</item>
+        <item>Kucing British Shorthair</item>
+        <item>Kucing American Shorthair</item>
+        <item>Kucing Scottish Fold</item>
+        <item>Kucing Balinese</item>
+        <item>Kucing Japanese Bobtail</item>
+        <item>Kucing Singapura</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Pilih Jenis Kelamin</item>
+        <item>Jantan</item>
+        <item>Betina</item>
+    </string-array>
+</resources>
