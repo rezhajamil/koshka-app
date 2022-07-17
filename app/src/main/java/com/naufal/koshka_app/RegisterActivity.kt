@@ -45,12 +45,12 @@ class RegisterActivity : AppCompatActivity() {
                 .build()
             mGoogleSignInClient=GoogleSignIn.getClient(this,gso)
             mGoogleSignInClient.signOut().addOnCompleteListener {
-                Toast.makeText(this, "Logout Account", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Logout Account", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
 
-            editor.clear()
+            editor.clear().commit()
         }
 
         iv_upload_avatar.setOnClickListener{

@@ -8,68 +8,67 @@
     android:background="@color/white"
     tools:context=".AdopsiFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingTop="12dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingLeft="16dp"-->
+<!--        android:paddingTop="12dp"-->
+<!--        android:paddingRight="16dp"-->
+<!--        android:paddingBottom="12dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="2"
-            android:fontFamily="@font/dm_sans"
-            android:text="Adopsi"
-            android:textColor="@color/primary_green"
-            android:textSize="34sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView3"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_weight="2"-->
+<!--            android:fontFamily="@font/dm_sans"-->
+<!--            android:text="Adopsi"-->
+<!--            android:textColor="@color/primary_green"-->
+<!--            android:textSize="34sp" />-->
 
-        <ImageView
-            android:id="@+id/iv_notif_adopsi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_notif" />
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_notif_adopsi"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@drawable/ic_notif" />-->
 
-        <ImageView
-            android:id="@+id/iv_chat_adopsi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_chat" />
-    </LinearLayout>
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_chat_adopsi"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@drawable/ic_chat" />-->
+<!--    </LinearLayout>-->
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/primary_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+<!--    <View-->
+<!--        android:id="@+id/divider"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="@color/primary_dark"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/dm_sans"
         android:text="Filter Kecamatan"
         android:textColor="@color/primary_green"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/sp_kecamatan"

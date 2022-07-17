@@ -1,5 +1,6 @@
 package com.naufal.koshka_app
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -21,6 +22,7 @@ class AdopsiFormActivity : AppCompatActivity() {
     private lateinit var ImageUri: Uri
     private lateinit var data:Adopsi
     private lateinit var sharedPreferences:SharedPreferences
+    private lateinit var progressDialog: ProgressDialog
     val refAdopsi=FirebaseDatabase.getInstance().getReference("Adopsi")
     var filename=""
     var id=""
@@ -55,28 +57,25 @@ class AdopsiFormActivity : AppCompatActivity() {
                 data.deskripsi=et_deskripsi_adopsi.text.toString()
                 data.image=filename
 
-                uploadImage()
-                refAdopsi.child(id).setValue(data)
-                Toast.makeText(this,"Berhasil Upload",Toast.LENGTH_SHORT).show()
+                progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("Menyimpan Data...")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
+                val storageReference = FirebaseStorage.getInstance().getReference("adopsi/$filename")
+                storageReference.putFile(ImageUri)
+                    .addOnSuccessListener {
+                        refAdopsi.child(id).setValue(data)
+                        Toast.makeText(this,"Berhasil Upload", Toast.LENGTH_LONG).show()
+                        progressDialog.dismiss()
+//                        startActivity(Intent(this,MainActivity::class.java).putExtra("fragment","adopsi"))
+                        finish()
+                    }.addOnFailureListener{
+                        Toast.makeText(this,"Gagal Uplaod Gambar", Toast.LENGTH_LONG).show()
+                        progressDialog.dismiss()
+                    }
 
-                startActivity(Intent(this,MainActivity::class.java).putExtra("fragment","adopsi"))
-                finish()
             }
         }
-    }
-
-    private fun uploadImage() {
-//
-        val storageReference = FirebaseStorage.getInstance().getReference("adopsi/$filename")
-
-        storageReference.putFile(ImageUri)
-            .addOnSuccessListener {
-//
-                Toast.makeText(this,"Berhasil", Toast.LENGTH_LONG).show()
-            }.addOnFailureListener{
-//            if (progressDialog.isShowing) progressDialog.dismiss()
-                Toast.makeText(this,"Failed", Toast.LENGTH_LONG).show()
-            }
     }
 
     private fun selectImage() {

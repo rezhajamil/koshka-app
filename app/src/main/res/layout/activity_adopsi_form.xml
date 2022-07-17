@@ -112,6 +112,7 @@
                     android:id="@+id/et_nama_adopsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapSentences"
                     android:textColor="@color/primary_green" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -217,7 +218,7 @@
                     android:id="@+id/et_deskripsi_adopsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
+                    android:inputType="textMultiLine|textCapSentences"
                     android:minHeight="100dp"
                     android:textColor="@color/primary_green" />
 

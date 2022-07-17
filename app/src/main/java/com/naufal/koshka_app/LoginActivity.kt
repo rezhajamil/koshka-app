@@ -83,12 +83,7 @@ class LoginActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-//                SavedPreference.setEmail(this, account.email.toString())
-//                SavedPreference.setUsername(this, account.displayName.toString())
                 Log.v("akun",account.email.toString())
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//                finish()
                 checkRegister(account.email.toString())
             }else{
                 Log.v("gagal2",task.exception.toString())
@@ -97,20 +92,23 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkRegister(email:String){
-        var usernull=true
         FirebaseDatabase.getInstance().getReference("User").addValueEventListener(object :ValueEventListener{
+            var usernull=true
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (snapshot in snapshot.children){
                     var user=snapshot.getValue(User::class.java)
                     if (user?.email==email){
+                        Log.v("usernull1", user.email.toString())
                         val sharedPreference =  getSharedPreferences("User",0)
                         var editor=sharedPreference.edit()
+                        editor.putString("id",user?.id)
                         editor.putString("email",user?.email)
                         editor.putString("name",user?.name)
                         editor.putString("phone",user?.phone)
                         editor.putString("avatar",user?.avatar)
                         editor.putString("address",user?.address)
                         editor.putString("role",user?.role)
+                        editor.commit()
 
                         usernull=false
                         startActivity(Intent(this@LoginActivity,MainActivity::class.java))
@@ -118,16 +116,18 @@ class LoginActivity : AppCompatActivity() {
                         break
                     }
                 }
+
+                if (usernull){
+                    Log.v("usernull",email)
+                    startActivity(Intent(this@LoginActivity,RegisterActivity::class.java).putExtra("email",email))
+                    finish()
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
 
             }
         })
-
-        if (usernull){
-            startActivity(Intent(this,RegisterActivity::class.java).putExtra("email",email))
-        }
     }
 
     override fun onStart() {
