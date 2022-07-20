@@ -32,17 +32,20 @@ class AdopsiDetailActivity : AppCompatActivity() {
     private lateinit var dataUser:User
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var user_id: String
+    private lateinit var user_role: String
+    private lateinit var data:Adopsi
     var refData= FirebaseDatabase.getInstance().getReference("User")
     var refDataAdopsi= FirebaseDatabase.getInstance().getReference("Adopsi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adopsi_detail)
-        val data=intent.getParcelableExtra<Adopsi>("data")
+        data= intent.getParcelableExtra<Adopsi>("data")!!
         val storageRef= FirebaseStorage.getInstance().reference.child("adopsi/${data?.image}")
         val localFile= File.createTempFile("tempImage","jpeg")
 
         sharedPreferences=getSharedPreferences("User",0)
         user_id=sharedPreferences.getString("id","").toString()
+        user_role=sharedPreferences.getString("role","").toString()
 
 
         progressDialog = ProgressDialog(this)
@@ -83,10 +86,10 @@ class AdopsiDetailActivity : AppCompatActivity() {
 
             popupMenu.setOnMenuItemClickListener { item ->
                 when(item.itemId) {
-//                    R.id.edit_adopsi -> {
-//                        startActivity(Intent(this@AdopsiDetailActivity,AdopsiFormActivity::class.java).putExtra("data",data))
-//                        return@setOnMenuItemClickListener true
-//                    }
+                    R.id.edit_adopsi -> {
+                        startActivity(Intent(this@AdopsiDetailActivity,EditAdopsiActivity::class.java).putExtra("data",data))
+                        return@setOnMenuItemClickListener true
+                    }
                     R.id.delete_adopsi->{
                     var alert= AlertDialog.Builder(this)
                     alert.setTitle("Hapus Data")
@@ -126,7 +129,7 @@ class AdopsiDetailActivity : AppCompatActivity() {
     }
 
     private fun getUserData(user: String) {
-        refData.child(user).addValueEventListener(object : ValueEventListener {
+        refData.child(user).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var user = snapshot.getValue(User::class.java)
                 dataUser= User()
@@ -147,8 +150,11 @@ class AdopsiDetailActivity : AppCompatActivity() {
                 Log.v("sama",(user?.id.toString()==user_id).toString())
                 Log.v("sama",user?.id.toString().toString())
                 Log.v("sama",user_id.toString())
-                if (user?.id.toString()==user_id){
-                    btn_contact_user_adopsi.visibility=View.INVISIBLE
+
+                if (user?.id.toString()==user_id||user_role=="Super Admin"||user_role=="Admin"){
+                    if (user?.id.toString()==user_id){
+                        btn_contact_user_adopsi.visibility=View.INVISIBLE
+                    }
                     iv_more_detail_adopsi.visibility=View.VISIBLE
                 }else{
                     btn_contact_user_adopsi.visibility=View.VISIBLE
@@ -171,9 +177,9 @@ class AdopsiDetailActivity : AppCompatActivity() {
         popupMenu.inflate(R.menu.popup_detail_adopsi)
         popupMenu.setOnMenuItemClickListener {
             when(it.itemId){
-//                R.id.edit_adopsi->{
-//                    true
-//                }
+                R.id.edit_adopsi->{
+                    true
+                }
                 R.id.delete_adopsi->{
                     true
                 }

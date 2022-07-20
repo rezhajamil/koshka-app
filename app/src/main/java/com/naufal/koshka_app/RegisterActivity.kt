@@ -1,5 +1,6 @@
 package com.naufal.koshka_app
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -7,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -27,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var mDatabase: DatabaseReference
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var editor:SharedPreferences.Editor
+    private lateinit var progressDialog: ProgressDialog
     var filename=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
             editor.clear().commit()
         }
 
-        iv_upload_avatar.setOnClickListener{
+        iv_avatar_register.setOnClickListener{
             selectImage()
         }
 
@@ -68,35 +69,37 @@ class RegisterActivity : AppCompatActivity() {
                 user.phone=et_phone.text.toString()
                 user.address=et_address.text.toString()
                 user.avatar=filename
-                user.role="user"
+                user.role="User"
 
-                if (filename!="")uploadImage()
-                mDatabase.child(user.id.toString()).setValue(user)
+                progressDialog = ProgressDialog(this)
+                progressDialog.setMessage("Menyimpan Data...")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
 
-                editor.putString("id",user.id)
-                editor.putString("email",user.email)
-                editor.putString("avatar",user.avatar)
-                editor.putString("name",user.name)
-                editor.putString("phone",user.phone)
-                editor.putString("address",user.address)
-                editor.putString("role",user.role)
-                editor.commit()
+                if (filename!=""){
+                    val storageReference = FirebaseStorage.getInstance().getReference("avatar/$filename")
+                    storageReference.putFile(ImageUri)
+                        .addOnSuccessListener {
+                            mDatabase.child(user.id.toString()).setValue(user)
+                            editor.putString("id",user.id)
+                            editor.putString("email",user.email)
+                            editor.putString("avatar",user.avatar)
+                            editor.putString("name",user.name)
+                            editor.putString("phone",user.phone)
+                            editor.putString("address",user.address)
+                            editor.putString("role",user.role)
+                            editor.commit()
+                            Toast.makeText(this,"Berhasil",Toast.LENGTH_LONG).show()
+                            progressDialog.dismiss()
+                            startActivity(Intent(this,MainActivity::class.java))
+                            finish()
+                        }.addOnFailureListener{
+                            progressDialog.dismiss()
+                            Toast.makeText(this,"Failed",Toast.LENGTH_LONG).show()
+                        }
+                }
             }
         }
-    }
-
-    private fun uploadImage() {
-//
-        val storageReference = FirebaseStorage.getInstance().getReference("avatar/$filename")
-
-        storageReference.putFile(ImageUri)
-            .addOnSuccessListener {
-//
-                Toast.makeText(this,"Berhasil",Toast.LENGTH_LONG).show()
-            }.addOnFailureListener{
-//            if (progressDialog.isShowing) progressDialog.dismiss()
-                Toast.makeText(this,"Failed",Toast.LENGTH_LONG).show()
-            }
     }
 
     private fun selectImage() {
@@ -111,20 +114,24 @@ class RegisterActivity : AppCompatActivity() {
 
         if (requestCode==100 &&resultCode== RESULT_OK){
             ImageUri=data?.data!!
-            iv_upload_avatar.setImageURI(ImageUri)
+            iv_avatar_register.setImageURI(ImageUri)
             val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
             val now = Date()
             filename = formatter.format(now)
 
             Glide.with(this)
                 .load(ImageUri)
-                .into(iv_upload_avatar)
+                .into(iv_avatar_register)
 
         }
     }
 
     private fun validateInput(): Boolean {
-        if (et_email.text?.length==0)
+        if (filename==""){
+            Toast.makeText(this,"Silahkan Upload Foto Profil",Toast.LENGTH_SHORT).show()
+            return false
+        }
+        else if (et_email.text?.length==0)
         {
             et_email.setError("Email tidak boleh kosong")
             et_email.requestFocus()

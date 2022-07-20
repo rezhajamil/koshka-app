@@ -57,11 +57,11 @@
 <!--        app:layout_constraintHorizontal_bias="0.0"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />-->
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/dm_sans"
         android:text="Filter Kecamatan"
         android:textColor="@color/primary_green"
@@ -120,7 +120,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_adopsi"
         android:layout_width="0dp"
-        android:layout_height="507dp"
+        android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"

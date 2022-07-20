@@ -16,12 +16,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var user_email:String
+    private lateinit var user_role:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         sharedPreferences=getSharedPreferences("User",0)
         user_email= sharedPreferences.getString("email","").toString()
+        user_role=sharedPreferences.getString("role","").toString()
         Log.v("login",user_email)
 
         var intentFragment=intent.getStringExtra("fragment")
@@ -29,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         if (user_email.equals("")){
             startActivity(Intent(this,LoginActivity::class.java))
             finish()
+        }
+
+        if (!user_role.equals("Super Admin")){
+            bottom_navigation.menu.removeItem(R.id.nav_users)
+        }else{
+            bottom_navigation.menu.removeItem(R.id.nav_konsul)
         }
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -49,6 +57,10 @@ class MainActivity : AppCompatActivity() {
             setFragment(KonsultasiFragment())
             tv_title.setText("Konsultasi")
             bottom_navigation.selectedItemId=R.id.nav_konsul
+        }else if (intentFragment?.toString().equals("users")){
+            setFragment(UsersFragment())
+            tv_title.setText("Users")
+            bottom_navigation.selectedItemId=R.id.nav_users
         }else if (intentFragment?.toString().equals("profile")){
             setFragment(ProfileFragment())
             tv_title.setText("Profile")
@@ -74,6 +86,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_konsul -> {
                     setFragment(KonsultasiFragment())
                     tv_title.setText("Konsultasi")
+                    true
+                }
+                R.id.nav_users->{
+                    setFragment(UsersFragment())
+                    tv_title.setText("Users")
                     true
                 }
                 R.id.nav_profile -> {

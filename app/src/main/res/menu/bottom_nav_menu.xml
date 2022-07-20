@@ -16,6 +16,10 @@
         android:icon="@drawable/nav_konsul"
         android:title="Konsultasi" />
     <item
+        android:id="@+id/nav_users"
+        android:icon="@drawable/nav_users"
+        android:title="Users" />
+    <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/nav_profile"
         android:title="Profile" />

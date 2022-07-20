@@ -12,4 +12,5 @@
     <color name="primary_green">#219685</color>
     <color name="primary_dark">#0B4148</color>
     <color name="secondary_green">#53B989</color>
+    <color name="grey">#aeaeae</color>
 </resources>

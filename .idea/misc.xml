@@ -15,6 +15,8 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/drawable/ic_more_vert.xml" value="0.235" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/activity_adopsi_detail.xml" value="0.25" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/activity_adopsi_form.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/activity_diskusi_form.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/activity_edit_profile.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/activity_login.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/activity_message.xml" value="0.23229166666666667" />
@@ -29,8 +31,13 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/fragment_home.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/fragment_konsultasi.xml" value="0.176" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/fragment_profile.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/fragment_user_adopsi.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/fragment_user_diskusi.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/fragment_users.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/row_chat_item.xml" value="0.536" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/row_item_adopsi.xml" value="0.264" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/row_item_diskusi.xml" value="0.264" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/layout/row_item_users.xml" value="0.536" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/menu/bottom_nav_menu.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/menu/popup_detail_adopsi.xml" value="0.4921875" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/ProjectRezha/Koshka_App/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.235" />

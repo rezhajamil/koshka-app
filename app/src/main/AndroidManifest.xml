@@ -16,6 +16,15 @@
         android:theme="@style/Theme.Koshka_App"
         tools:targetApi="31">
         <activity
+            android:name=".EditAdopsiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DiskusiFormActivity"
+            android:exported="false" />
+        <activity
             android:name=".MessageListActivity"
             android:exported="false" />
         <activity
