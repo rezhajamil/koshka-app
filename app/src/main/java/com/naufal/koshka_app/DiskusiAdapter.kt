@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,7 +18,8 @@ import com.google.firebase.storage.FirebaseStorage
 import com.naufal.koshka_app.model.Diskusi
 import com.naufal.koshka_app.model.User
 
-class DiskusiAdapter (private var diskusi: ArrayList<Diskusi>): RecyclerView.Adapter<DiskusiAdapter.ViewHolder>(){
+class DiskusiAdapter (private var diskusi: ArrayList<Diskusi>,
+                      private val listener:(Diskusi)->Unit): RecyclerView.Adapter<DiskusiAdapter.ViewHolder>(){
     lateinit var contextAdapter: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiskusiAdapter.ViewHolder {
@@ -29,7 +29,7 @@ class DiskusiAdapter (private var diskusi: ArrayList<Diskusi>): RecyclerView.Ada
         return DiskusiAdapter.ViewHolder(inflatedView)
     }
     override fun onBindViewHolder(holder: DiskusiAdapter.ViewHolder, position: Int) {
-        holder.bindItem(diskusi[position],contextAdapter)
+        holder.bindItem(diskusi[position],listener,contextAdapter)
     }
 
     override fun getItemCount(): Int =diskusi.size
@@ -37,13 +37,13 @@ class DiskusiAdapter (private var diskusi: ArrayList<Diskusi>): RecyclerView.Ada
         private val tvCaption=view.findViewById<TextView>(R.id.tv_caption_diskusi)
         private val tvComment=view.findViewById<TextView>(R.id.tv_comment)
         private val ivPhoto=view.findViewById<ImageView>(R.id.iv_diskusi)
-        private val ivProfile=view.findViewById<ImageView>(R.id.iv_profile_diskusi)
+        private val ivProfile=view.findViewById<ImageView>(R.id.iv_profile_detail_diskusi)
         private val tvName=view.findViewById<TextView>(R.id.tv_name_diskusi)
         private val card=view.findViewById<CardView>(R.id.card_diskusi)
         private val btnComment=view.findViewById<ImageButton>(R.id.btn_comment)
 
 
-        fun bindItem(diskusi: Diskusi, contextAdapter: Context){
+        fun bindItem(diskusi: Diskusi, listener: (Diskusi) -> Unit, contextAdapter: Context){
             if (!diskusi.image.equals("")){
                 val storageRef= FirebaseStorage.getInstance().reference.child("diskusi/${diskusi.image}")
                 storageRef.downloadUrl.addOnCompleteListener {
@@ -59,6 +59,10 @@ class DiskusiAdapter (private var diskusi: ArrayList<Diskusi>): RecyclerView.Ada
             tvCaption.setText(diskusi.caption)
             diskusi.user_id?.let { getUser(it,tvName,ivProfile,contextAdapter) }
             getComment(diskusi.id.toString(),tvComment)
+
+            itemView.setOnClickListener {
+                listener(diskusi)
+            }
         }
 
         private fun getComment(id: String, tvComment: TextView) {

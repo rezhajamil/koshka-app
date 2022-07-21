@@ -49,7 +49,7 @@ class MessageActivity : AppCompatActivity() {
         tv_receiver_name.setText(dataReceiver?.name)
 
         btn_send.setOnClickListener {
-            if (tv_send.text.equals("")){
+            if (tv_send.text.toString()==""){
                 tv_send.requestFocus()
             }else{
                 sendMessage(user_id,dataReceiver?.id,tv_send.text.toString(),tv_send,System.currentTimeMillis().toString())

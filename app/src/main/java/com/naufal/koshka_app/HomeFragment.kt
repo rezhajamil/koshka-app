@@ -56,7 +56,9 @@ class HomeFragment : Fragment() {
                     dataList.add(data!!)
                 }
 
-                rv_diskusi.adapter=DiskusiAdapter(dataList)
+                rv_diskusi.adapter=DiskusiAdapter(dataList){
+                    startActivity(Intent(context,DiskusiDetailActivity::class.java).putExtra("data",it))
+                }
                 if (dataList.size==0){
                     iv_null_dikusi.visibility=View.VISIBLE
                     tv_null_diskusi.visibility=View.VISIBLE

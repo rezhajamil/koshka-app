@@ -1,6 +1,7 @@
 package com.naufal.koshka_app
 
 import android.app.ProgressDialog
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,8 @@ import kotlinx.android.synthetic.main.fragment_users.*
 
 class UsersFragment : Fragment() {
     private lateinit var progressDialog: ProgressDialog
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var id:String
     val refUser=FirebaseDatabase.getInstance().getReference("User")
     var userList=ArrayList<User>()
     override fun onCreateView(
@@ -30,6 +33,8 @@ class UsersFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         rv_users.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        sharedPreferences= context?.getSharedPreferences("User",0)!!
+        id=sharedPreferences.getString("id","").toString()
 
         progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Mengambil Data...")
@@ -41,7 +46,7 @@ class UsersFragment : Fragment() {
                 userList.clear()
                 for (dataSnapshot in snapshot.children){
                     var user=dataSnapshot.getValue(User::class.java)
-                    if (user?.role!="Super Admin"){
+                    if (user?.id!=id){
                         userList.add(user!!)
                     }
                 }

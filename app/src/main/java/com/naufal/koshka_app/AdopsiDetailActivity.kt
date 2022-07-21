@@ -88,6 +88,7 @@ class AdopsiDetailActivity : AppCompatActivity() {
                 when(item.itemId) {
                     R.id.edit_adopsi -> {
                         startActivity(Intent(this@AdopsiDetailActivity,EditAdopsiActivity::class.java).putExtra("data",data))
+                        finish()
                         return@setOnMenuItemClickListener true
                     }
                     R.id.delete_adopsi->{
@@ -151,7 +152,7 @@ class AdopsiDetailActivity : AppCompatActivity() {
                 Log.v("sama",user?.id.toString().toString())
                 Log.v("sama",user_id.toString())
 
-                if (user?.id.toString()==user_id||user_role=="Super Admin"||user_role=="Admin"){
+                if (user?.id.toString()==user_id||user_role=="Admin"){
                     if (user?.id.toString()==user_id){
                         btn_contact_user_adopsi.visibility=View.INVISIBLE
                     }

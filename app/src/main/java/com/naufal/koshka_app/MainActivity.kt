@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        if (!user_role.equals("Super Admin")){
+        if (!user_role.equals("Admin")){
             bottom_navigation.menu.removeItem(R.id.nav_users)
         }else{
             bottom_navigation.menu.removeItem(R.id.nav_konsul)
