@@ -17,13 +17,13 @@ import com.naufal.koshka_app.model.Adopsi
 import kotlinx.android.synthetic.main.fragment_adopsi.*
 
 
-class AdopsiFragment : Fragment() {
+class AdopsiFragment(user_email: String) : Fragment() {
     private lateinit var mDatabase: DatabaseReference
     private lateinit var progressDialog: ProgressDialog
 
     private var dataList=ArrayList<Adopsi>()
     var refData= FirebaseDatabase.getInstance().getReference("Adopsi")
-
+    var user_email=user_email
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +38,7 @@ class AdopsiFragment : Fragment() {
 
         rv_adopsi.layoutManager=LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
 
+
         progressDialog = ProgressDialog(context)
         progressDialog.setMessage("Mengambil Data...")
         progressDialog.setCancelable(false)
@@ -45,8 +46,9 @@ class AdopsiFragment : Fragment() {
         getAllData()
 
         fab_add_adopsi.setOnClickListener{
-            Log.v("halo","halo")
-            startActivity(Intent(activity,AdopsiFormActivity::class.java))
+            if (checkLogin()){
+                startActivity(Intent(activity,AdopsiFormActivity::class.java))
+            }
         }
 
         sp_kecamatan.onItemSelectedListener=object :AdapterView.OnItemSelectedListener{
@@ -154,6 +156,15 @@ class AdopsiFragment : Fragment() {
 
         })
 
+    }
+
+    private fun checkLogin(): Boolean {
+        if (user_email.equals("")){
+            startActivity(Intent(activity,LoginActivity::class.java))
+        }else{
+            return true
+        }
+        return false
     }
 
 }

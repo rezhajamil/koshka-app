@@ -9,8 +9,7 @@
     <item
         android:id="@+id/nav_adopsi"
         android:icon="@drawable/nav_adopsi"
-        android:title="Adopsi"
-        app:actionViewClass="android.widget.SearchView" />
+        android:title="Adopsi" />
     <item
         android:id="@+id/nav_konsul"
         android:icon="@drawable/nav_konsul"

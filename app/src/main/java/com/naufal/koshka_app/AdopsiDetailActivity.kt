@@ -125,7 +125,9 @@ class AdopsiDetailActivity : AppCompatActivity() {
         }
 
         btn_contact_user_adopsi.setOnClickListener {
-            startActivity(Intent(this@AdopsiDetailActivity,MessageActivity::class.java).putExtra("receiver",dataUser))
+            if (checkLogin()){
+                startActivity(Intent(this@AdopsiDetailActivity,MessageActivity::class.java).putExtra("receiver",dataUser))
+            }
         }
     }
 
@@ -187,6 +189,15 @@ class AdopsiDetailActivity : AppCompatActivity() {
                 else -> {true}
             }
         }
+    }
+
+    private fun checkLogin(): Boolean {
+        if (user_id.equals("")){
+            startActivity(Intent(this,LoginActivity::class.java))
+        }else{
+            return true
+        }
+        return false
     }
 
 }
